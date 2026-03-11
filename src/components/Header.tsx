@@ -42,11 +42,11 @@ export function Header() {
       <div className="max-w-[1200px] mx-auto flex items-center justify-between relative z-[10002]">
         {isHome ? (
           <a href="#hero" className="font-display text-2xl font-semibold text-gold tracking-[0.02em] transition-opacity hover:opacity-90">
-            TayGaff
+            <img src="/assets/TayGaff.png" alt="TayGaff" className="block h-14 w-auto object-contain" />
           </a>
         ) : (
           <Link to="/" className="font-display text-2xl font-semibold text-gold tracking-[0.02em] transition-opacity hover:opacity-90">
-            TayGaff
+            <img src="/assets/TayGaff.png" alt="TayGaff" className="block h-14 w-auto object-contain" />
           </Link>
         )}
 
