@@ -10,6 +10,7 @@ import { Gallery } from './components/Gallery'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { OrderStatus } from './pages/OrderStatus'
+import ScrollToTop from './components/ScrollToTop'
 
 function HomePage() {
   const { hash } = useLocation()
@@ -38,6 +39,7 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
