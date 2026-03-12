@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        /* TayGaff brand - use via global.css vars or these names */
         bg: 'var(--color-bg)',
         'bg-elevated': 'var(--color-bg-elevated)',
         'bg-card': 'var(--color-bg-card)',
@@ -18,33 +17,24 @@ export default {
         burgundy: 'var(--color-burgundy)',
         'burgundy-deep': 'var(--color-burgundy-deep)',
         accent: 'var(--color-accent)',
+        'on-accent': 'var(--color-on-accent)',
+        'on-dark': 'var(--color-on-dark)',
       },
       fontFamily: {
-        display: ['var(--font-display)'],
-        body: ['var(--font-body)'],
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
+        body: ['Outfit', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
-        'sm': 'var(--radius-sm)',
-        'md': 'var(--radius-md)',
-        'lg': 'var(--radius-lg)',
-        'full': 'var(--radius-full)',
+        'sm': '4px',
+        'md': '8px',
+        'lg': '16px',
+        'full': '9999px',
       },
       transitionDuration: {
         DEFAULT: '300ms',
       },
-      keyframes: {
-        'bounce-down': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(6px)' },
-        },
-        'bounce-up': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-6px)' },
-        },
-      },
-      animation: {
-        'bounce-down': 'bounce-down 2s infinite',
-        'bounce-up': 'bounce-up 2s infinite',
+      transitionTimingFunction: {
+        DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
   },

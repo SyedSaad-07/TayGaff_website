@@ -13,19 +13,20 @@ export function Footer() {
   const isHome = pathname === '/'
 
   return (
-    <footer className="bg-bg pt-16 pb-8 px-8 border-t border-gold/10">
+    <footer className="bg-bg pt-16 pb-8 px-8 border-t border-[rgba(var(--color-royal-rgb),0.15)]">
       <div className="max-w-[1200px] mx-auto text-center">
         <motion.div
+          className="footer__brand"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           {isHome ? (
-            <a href="#hero" className="font-display text-2xl font-semibold text-gold inline-block mb-2 hover:text-gold-light transition-colors">
+            <a href="#hero" className="font-display text-[1.75rem] font-semibold text-gold inline-block mb-2 hover:text-gold-light">
               TayGaff
             </a>
           ) : (
-            <Link to="/" className="font-display text-2xl font-semibold text-gold inline-block mb-2 hover:text-gold-light transition-colors">
+            <Link to="/" className="font-display text-[1.75rem] font-semibold text-gold inline-block mb-2 hover:text-gold-light">
               TayGaff
             </Link>
           )}
@@ -35,7 +36,7 @@ export function Footer() {
         </motion.div>
 
         <motion.nav
-          className="flex flex-wrap justify-center gap-6 gap-y-2 mb-8"
+          className="flex flex-wrap justify-center gap-6 gap-y-8 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -43,11 +44,11 @@ export function Footer() {
         >
           {footerLinks.map((link) =>
             isHome ? (
-              <a key={link.href} href={link.href} className="text-sm text-cream-muted hover:text-gold transition-colors">
+              <a key={link.href} href={link.href} className="text-sm text-cream-muted hover:text-gold">
                 {link.label}
               </a>
             ) : (
-              <Link key={link.href} to={`/${link.href}`} className="text-sm text-cream-muted hover:text-gold transition-colors">
+              <Link key={link.href} to={`/${link.href}`} className="text-sm text-cream-muted hover:text-gold">
                 {link.label}
               </Link>
             )
@@ -55,7 +56,7 @@ export function Footer() {
         </motion.nav>
 
         <motion.div
-          className="pt-8 border-t border-gold/10"
+          className="pt-8 border-t border-[rgba(var(--color-royal-rgb),0.12)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

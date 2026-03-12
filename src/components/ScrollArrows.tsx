@@ -59,13 +59,13 @@ export function ScrollArrows() {
   }
 
   const arrowSvg = (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-bounce-down">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M12 5v14M19 12l-7 7-7-7" />
     </svg>
   )
 
   const arrowUpSvg = (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-bounce-up">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M12 19V5M5 12l7-7 7 7" />
     </svg>
   )
@@ -76,7 +76,7 @@ export function ScrollArrows() {
         {!isAtBottom && (
           <motion.a
             href="#about"
-            className="fixed bottom-8 left-8 flex flex-col items-center gap-2 text-cream-muted text-xs tracking-[0.2em] z-[100] transition-colors hover:text-gold sm:bottom-20"
+            className="fixed flex flex-col items-center gap-2 text-cream-muted text-xs tracking-[0.2em] z-[100] transition-colors duration-200 hover:text-gold bottom-20 left-8 max-sm:bottom-20 sm:bottom-8"
             onClick={scrollDown}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ export function ScrollArrows() {
             transition={{ duration: 0.25 }}
           >
             <span>Scroll</span>
-            {arrowSvg}
+            <span className="animate-bounce-down">{arrowSvg}</span>
           </motion.a>
         )}
       </AnimatePresence>
@@ -93,7 +93,7 @@ export function ScrollArrows() {
         {!isAtTop && (
           <motion.a
             href="#hero"
-            className="fixed bottom-8 right-8 flex flex-col items-center gap-2 text-cream-muted text-xs tracking-[0.2em] z-[100] transition-colors hover:text-gold"
+            className="fixed flex flex-col items-center gap-2 text-cream-muted text-xs tracking-[0.2em] z-[100] transition-colors duration-200 hover:text-gold bottom-8 right-8"
             onClick={scrollUp}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export function ScrollArrows() {
             transition={{ duration: 0.25 }}
           >
             <span>Scroll</span>
-            {arrowUpSvg}
+            <span className="animate-bounce-up">{arrowUpSvg}</span>
           </motion.a>
         )}
       </AnimatePresence>

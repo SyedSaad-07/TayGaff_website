@@ -25,9 +25,9 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 px-8 max-w-[1200px] mx-auto">
+    <section id="services" className="services section">
       <motion.span
-        className="block text-xs text-cream-muted uppercase tracking-[0.25em] mb-6 font-medium"
+        className="section-subtitle"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -35,7 +35,7 @@ export function Services() {
         What We Offer
       </motion.span>
       <motion.h2
-        className="font-display text-[clamp(2rem,4vw,3rem)] text-gold mb-4 tracking-[0.02em] relative after:block after:w-12 after:h-0.5 after:bg-gradient-to-r after:from-gold after:to-transparent after:mt-2 after:rounded-full"
+        className="section-title"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -48,7 +48,7 @@ export function Services() {
         {services.map((service, i) => (
           <motion.article
             key={service.title}
-            className="bg-bg-card p-8 rounded-md border border-gold/15 transition-colors transition-shadow duration-300 hover:border-gold/40 hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+            className="bg-bg-card p-8 rounded-md border border-[rgba(var(--color-royal-rgb),0.15)] transition-[border-color,box-shadow] duration-300 hover:border-[rgba(var(--color-royal-rgb),0.4)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}

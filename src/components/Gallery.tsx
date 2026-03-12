@@ -9,17 +9,17 @@ const galleryItems = [
   { label: 'Everyday Wear', accent: 3 },
 ]
 
-const accentBg = {
-  1: 'linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-deep) 100%)',
-  2: 'linear-gradient(135deg, var(--color-accent) 0%, var(--color-burgundy-deep) 100%)',
-  3: 'linear-gradient(135deg, rgba(201, 169, 98, 0.3) 0%, var(--color-burgundy-deep) 100%)',
-}
+const accentBgClass = [
+  'gallery-item-bg-1',
+  'gallery-item-bg-2',
+  'gallery-item-bg-3',
+]
 
 export function Gallery() {
   return (
-    <section id="gallery" className="py-24 px-8 max-w-[1200px] mx-auto">
+    <section id="gallery" className="gallery section">
       <motion.span
-        className="block text-xs text-cream-muted uppercase tracking-[0.25em] mb-6 font-medium"
+        className="section-subtitle"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -27,7 +27,7 @@ export function Gallery() {
         Our Work
       </motion.span>
       <motion.h2
-        className="font-display text-[clamp(2rem,4vw,3rem)] text-gold mb-4 tracking-[0.02em] relative after:block after:w-12 after:h-0.5 after:bg-gradient-to-r after:from-gold after:to-transparent after:mt-2 after:rounded-full"
+        className="section-title"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -40,7 +40,7 @@ export function Gallery() {
         {galleryItems.map((item, i) => (
           <motion.div
             key={item.label}
-            className="aspect-[3/4] rounded-md overflow-hidden cursor-default group"
+            className="group aspect-[3/4] rounded-md overflow-hidden cursor-default"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-30px' }}
@@ -49,10 +49,9 @@ export function Gallery() {
           >
             <div className="relative w-full h-full flex items-end p-6">
               <div
-                className="absolute inset-0 bg-bg-card transition-transform duration-500 group-hover:scale-105"
-                style={{ background: accentBg[item.accent as keyof typeof accentBg] }}
+                className={`absolute inset-0 transition-transform duration-500 group-hover:scale-105 ${accentBgClass[item.accent - 1]}`}
               />
-              <span className="relative z-10 font-display text-[1.1rem] font-medium text-cream drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+              <span className="relative z-10 font-display text-lg font-medium text-on-dark [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
                 {item.label}
               </span>
             </div>

@@ -1,22 +1,31 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
 
-/* ========== Global colors (TayGaff brand) ========== */
-:root {
-  --color-bg: #0f0d0b;
-  --color-bg-elevated: #1a1512;
-  --color-bg-card: #231e1a;
-  --color-cream: #f5f0e8;
-  --color-cream-muted: #d4cfc4;
-  --color-gold: #c9a962;
-  --color-gold-light: #e5d4a1;
-  --color-burgundy: #5c3d38;
-  --color-burgundy-deep: #3d2522;
-  --color-accent: #8b6b47;
-
+/* ========== Theme (Tailwind utilities: bg-*, text-*, etc.) ========== */
+@theme {
+  /* TayGaff Brand Palette - Royal Blue & Pearl White */
+  --color-bg: #fdfcf9;
+  --color-bg-elevated: #f8f6f3;
+  --color-bg-card: #f2f0eb;
+  --color-cream: #1e3a5f;
+  --color-cream-muted: #5b6b7c;
+  --color-gold: #4169e1;
+  --color-gold-light: #6b8ce8;
+  --color-burgundy: #2c4a8a;
+  --color-burgundy-deep: #1e3a5f;
+  --color-accent: #2563eb;
+  --color-on-accent: #ffffff;
+  --color-on-dark: #f8f6f3;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Outfit', system-ui, sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
 
+/* ========== Global CSS variables (rgba, etc.) ========== */
+:root {
+  --color-royal-rgb: 65, 105, 225;
+  --color-navy-rgb: 30, 58, 95;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -25,12 +34,7 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
   --space-4xl: 6rem;
-
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
   --radius-full: 9999px;
-
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -39,21 +43,14 @@
   *,
   *::before,
   *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    @apply box-border m-0 p-0;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  #hero,
-  #about,
-  #services,
-  #products,
-  #gallery,
-  #contact {
+  #hero, #about, #services, #products, #gallery, #contact {
     scroll-margin-top: 80px;
   }
 
@@ -98,7 +95,82 @@
   }
 }
 
-/* ========== Scroll arrow keyframes (used by ScrollArrows) ========== */
+/* ========== Section & title utilities ========== */
+@layer components {
+  .section {
+    padding: var(--space-4xl) var(--space-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-gold);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold) 50%, transparent);
+    margin-top: var(--space-sm);
+    border-radius: var(--radius-full);
+  }
+
+  .section-subtitle {
+    font-size: 0.8rem;
+    color: var(--color-cream-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-bottom: var(--space-2xl);
+    font-weight: 500;
+  }
+}
+
+/* ========== Complex backgrounds (used by Hero / Gallery) ========== */
+.hero-bg-gradient {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(var(--color-navy-rgb), 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 85% 70%, rgba(var(--color-royal-rgb), 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 15% 80%, rgba(var(--color-navy-rgb), 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-elevated) 100%);
+}
+
+.gallery-item-bg-1 {
+  background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-deep) 100%);
+}
+
+.gallery-item-bg-2 {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-burgundy-deep) 100%);
+}
+
+.gallery-item-bg-3 {
+  background: linear-gradient(135deg, rgba(var(--color-royal-rgb), 0.25) 0%, var(--color-burgundy-deep) 100%);
+}
+
+.about-pattern-bg {
+  background:
+    linear-gradient(135deg, rgba(var(--color-royal-rgb), 0.05) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(var(--color-royal-rgb), 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(var(--color-royal-rgb), 0.05) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(var(--color-royal-rgb), 0.05) 25%, transparent 25%);
+  background-size: 40px 40px;
+}
+
+.products-card-pattern {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(var(--color-royal-rgb), 0.08) 10px,
+    rgba(var(--color-royal-rgb), 0.08) 20px
+  );
+}
+
 @keyframes bounce-down {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(6px); }
@@ -107,4 +179,12 @@
 @keyframes bounce-up {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+}
+
+.animate-bounce-down {
+  animation: bounce-down 2s infinite;
+}
+
+.animate-bounce-up {
+  animation: bounce-up 2s infinite;
 }
